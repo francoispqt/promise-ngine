@@ -1,0 +1,21 @@
+{
+  "name": "promise-ngine",
+  "version": "0.0.1",
+  "description": "Helper promise api",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test"
+  },
+  "keywords": [
+    "promise",
+    "engine",
+    "async",
+    "api",
+    "rules"
+  ],
+  "author": "Francois Parquet",
+  "license": "ISC",
+  "dependencies": {
+    "promise-to-object": "^1.1.31"
+  }
+}
