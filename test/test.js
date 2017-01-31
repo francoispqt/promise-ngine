@@ -7,9 +7,9 @@ const PromiseNgine = new (require('../index'))(true);
 Promise.ngine({
     finalStr: "",
     first: 1,
-    second: new Promise.NgineKey((resolve, reject, result) => {
-            result.finalStr += "2";
-            resolve(result.finalStr);
+    second: new Promise.NgineKey(function(resolve, reject) {
+            this.finalStr += "2";
+            resolve(this.finalStr);
     }).pos(2),
     third: new Promise.NgineKey((resolve, reject, result) => {
             result.finalStr += "0";
