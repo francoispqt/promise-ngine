@@ -1,7 +1,7 @@
 {
   "name": "promise-ngine",
-  "version": "0.0.1",
-  "description": "Helper promise api",
+  "version": "0.0.11",
+  "description": "A promise engine to resolve all promises in an object with control over concurrency and seriality, passing the result along the way.",
   "main": "index.js",
   "scripts": {
     "test": "node test/test"

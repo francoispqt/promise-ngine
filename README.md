@@ -52,9 +52,10 @@ Promise.ngine({
      console.log(result) // { user: { infos : {}, orders : [] } }
 })
 ```
-In order to have the orders promise to have the result of the infos promise,
+To have the 'orders' promise access the result of the infos promise,
 the integer passed to ```.pos``` method of the orders promise must be higher than the one for the infos promise.
 
+#### Concurrency
 At the same time, you might need other data than don't need anything from the orders promise
 but needs data from the infos promise. Therefore, it can run concurrently with the orders promise. This can be achieved by passing the same position as the one passed to the orders promise.
 
