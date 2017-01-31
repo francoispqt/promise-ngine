@@ -135,7 +135,7 @@ Example:
 Promise.ngine({
      greeting: 'hello ',
      somePromise: new Promise.NgineKey((resolve, reject, result) => {
-          return new Promise.ngine({
+          return Promise.ngine({
                foo: 'bar',
                greeting: new Promise.NgineKey((resolve, reject, subresult) => {
                     return resolve(result.greeting + 'world !');
