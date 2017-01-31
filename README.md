@@ -18,18 +18,32 @@ The engine exposes two methods :
 
 ### Promise.ngine
 A method resolving all ngine keys contained in an object or an array passing the result.
+
+#### Promise.NgineKey
+An engine key is constructed with a method taking three arguments as below :
+``` javascript
+ new Promise.NgineKey((resolve, reject, result) => {});
+```
+
+An engine key can be resolved calling the resolve method passing the result that will be mapped to
+the key's original position in the object. It can also be resolved returning a Promise.
+
+The property ```pos``` on a engine key sets the position of the Promise in the chain. 0 being first position.
+``` javascript
+ new Promise.NgineKey((resolve, reject, result) => {}).pos(0);
+```
+
+#### Examples
 Example with a pseudo sql call and a pseudo mongo call needing result from sql :
 ``` javascript
 Promise.ngine({
       user: {
-          infos: new Promise.NgineKey((resolve, reject, result) => {
-               db.query('select * from users where email=email@email.com')
-               .then(resolve)
-               .catch(reject);
+          infos: new Promise.NgineKey((resolve, reject, result) => { // call happens first
+               return db.query('select * from users where email=email@email.com') // returns a Promise
           }).pos(0),
-          orders: new Promise.NgineKey((resolve, reject, result) => {
+          orders: new Promise.NgineKey((resolve, reject, result) => { // call happens second
                orders.find({id_user: result.user.infos.id})
-               .then(resolve)
+               .then(resolve) // calls the resolve method
                .catch(reject);
           }).pos(1)
      }
